@@ -42,6 +42,7 @@ describe("The highest card game", function(){
       expect(whoWins(['6', 'J'], ['4','5'])).toBe('Player1 wins 2 to 0');
       expect(whoWins(['6', 'J'], ['4','J'])).toBe('Player1 wins 1 to 0');
       expect(whoWins(['6', 'J'], ['9','Q'])).toBe('Player2 wins 2 to 0');
+      expect(whoWins(['6', '', '7'], ['','Q', 'J'])).toBe('Player2 wins 2 to 1');
   });
 
   it("should have a tie if each player wins the same amount of rounds", function(){
