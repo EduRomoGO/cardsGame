@@ -10,8 +10,7 @@ function whoWins (hand1, hand2) {
 }
 
 function invalidHands (hand1, hand2) {
-	var h1size = hand1.length;
-	var	h2size = hand2.length;
+	var h1size = hand1.length, h2size = hand2.length;
 
 	if ((hand1[0] === '' && hand2[0] === '') ||
 			(h1size === 0 && h2size === 0)			 ||
@@ -24,13 +23,10 @@ function invalidHands (hand1, hand2) {
 function calculatePoints (hand1, hand2) {
 
 	var values = ['', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'J', 'Q', 'K'];
-	var player1points = 0;
-	var player2points = 0;
-	var i;
+	var player1points = 0, player2points = 0, i = 0;
 
 	for (i = 0; i < hand1.length; i++) {
-		var h1value = values.indexOf(hand1[i]);
-		var h2value = values.indexOf(hand2[i]);
+		var h1value = values.indexOf(hand1[i]), h2value = values.indexOf(hand2[i]);
 		if (h1value > h2value)
 				player1points++;
 		if (h1value < h2value)
