@@ -1,24 +1,13 @@
 
 function whoWins (hand1, hand2) {
 
-	var values = ['', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'J', 'Q', 'K'];
-	var player1points = 0;
-	var player2points = 0;
-
 	if (invalidHands(hand1,hand2))
 			return 'Invalid input';
 
-	var i;
-	for (i = 0; i < hand1.length; i++){
-		if (values.indexOf(hand1[i]) > values.indexOf(hand2[i]))
-				player1points++;
-		if (values.indexOf(hand1[i]) < values.indexOf(hand2[i]))
-				player2points++;
-	}
+	var playerPoints = calculatePoints(hand1, hand2);
 
-	return decideWinner(player1points, player2points);
+	return decideWinner.apply('', playerPoints);
 }
-
 
 function invalidHands (hand1, hand2) {
 	var h1size = hand1.length;
@@ -31,6 +20,23 @@ function invalidHands (hand1, hand2) {
 	
 	return false;
 }
+
+function calculatePoints (hand1, hand2) {
+
+	var values = ['', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'J', 'Q', 'K'];
+	var player1points = 0;
+	var player2points = 0;
+	var i;
+
+	for (i = 0; i < hand1.length; i++){
+		if (values.indexOf(hand1[i]) > values.indexOf(hand2[i]))
+				player1points++;
+		if (values.indexOf(hand1[i]) < values.indexOf(hand2[i]))
+				player2points++;
+	}
+	return [player1points, player2points];
+}
+
 
 function decideWinner (player1points, player2points) {
 	if (player1points > player2points)
