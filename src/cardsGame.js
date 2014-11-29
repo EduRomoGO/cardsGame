@@ -25,14 +25,19 @@ function calculatePoints (hand1, hand2) {
 	var values = ['', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'J', 'Q', 'K'];
 	var player1points = 0, player2points = 0, i = 0;
 
-	for (i = 0; i < hand1.length; i++) {
-		var h1value = values.indexOf(hand1[i]), h2value = values.indexOf(hand2[i]);
-		if (h1value > h2value)
-				player1points++;
-		if (h1value < h2value)
-				player2points++;
+	return acumulatePoints(hand1, hand2);
+
+	function acumulatePoints (hand1, hand2) {
+		for (i = 0; i < hand1.length; i++) {
+			var h1value = values.indexOf(hand1[i]), h2value = values.indexOf(hand2[i]);
+			if (h1value > h2value)
+					player1points++;
+			if (h1value < h2value)
+					player2points++;
+		}
+		return [player1points, player2points];
 	}
-	return [player1points, player2points];
+
 }
 
 function decideWinner (player1points, player2points) {
