@@ -15,6 +15,7 @@
 */
 
 describe("The highest card game", function(){
+  var whoWins = higherCardGame.whoWins;
 
   it("may have a winner with one round", function(){
       expect(whoWins(['1'],['2'])).toBe('Player2 wins 1 to 0');
