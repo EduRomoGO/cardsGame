@@ -28,21 +28,22 @@ function calculatePoints (hand1, hand2) {
 	var player2points = 0;
 	var i;
 
-	for (i = 0; i < hand1.length; i++){
-		if (values.indexOf(hand1[i]) > values.indexOf(hand2[i]))
+	for (i = 0; i < hand1.length; i++) {
+		var h1value = values.indexOf(hand1[i]);
+		var h2value = values.indexOf(hand2[i]);
+		if (h1value > h2value)
 				player1points++;
-		if (values.indexOf(hand1[i]) < values.indexOf(hand2[i]))
+		if (h1value < h2value)
 				player2points++;
 	}
 	return [player1points, player2points];
 }
 
-
 function decideWinner (player1points, player2points) {
 	if (player1points > player2points)
 		return 'Player1 wins ' + player1points + ' to ' + player2points;
-	else if (player1points < player2points)
+	if (player1points < player2points)
 		return 'Player2 wins ' + player2points + ' to ' + player1points;
-	else
+	if (player1points === player2points)
 		return 'Tie';
 }
