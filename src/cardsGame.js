@@ -16,12 +16,7 @@ function whoWins (hand1, hand2) {
 				player2points++;
 	}
 
-	if (player1points > player2points)
-		return 'Player1 wins ' + player1points + ' to ' + player2points;
-	else if (player1points < player2points)
-		return 'Player2 wins ' + player2points + ' to ' + player1points;
-	else
-		return 'Tie';
+	return decideWinner(player1points, player2points);
 }
 
 
@@ -35,4 +30,13 @@ function invalidHands (hand1, hand2) {
 				return true;
 	
 	return false;
+}
+
+function decideWinner (player1points, player2points) {
+	if (player1points > player2points)
+		return 'Player1 wins ' + player1points + ' to ' + player2points;
+	else if (player1points < player2points)
+		return 'Player2 wins ' + player2points + ' to ' + player1points;
+	else
+		return 'Tie';
 }
